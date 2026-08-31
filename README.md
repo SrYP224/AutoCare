@@ -39,6 +39,9 @@ AutoCare busca solucionar este problema proporcionando una herramienta sencilla 
 - Consultar el total gastado en mantenimiento.
 - Identificar próximos mantenimientos según kilometraje.
 - Mostrar un resumen general del estado del vehículo.
+- Registro e inicio de sesión de usuarios.
+- Almacenamiento de información en la nube.
+- Sincronización de los datos del usuario entre dispositivos.
 
 Para conocer el detalle de cada funcionalidad, consultar:
 
@@ -48,17 +51,22 @@ Para conocer el detalle de cada funcionalidad, consultar:
 
 ## Pantallas
 
-La aplicación contará inicialmente con **3 pantallas principales**:
+### 1. Login / Registro
 
-### 1. Inicio
+Permite al usuario crear una cuenta e iniciar sesión para acceder a sus datos personales.
+
+Las demás pantallas estarán disponibles después de iniciar sesión:
+
+
+### 2. Inicio
 
 Presenta un resumen del vehículo y de su estado de mantenimiento.
 
-### 2. Mi vehículo
+### 3. Mi vehículo
 
 Permite consultar y actualizar la información básica del vehículo.
 
-### 3. Mantenimientos
+### 4. Mantenimientos
 
 Permite registrar, consultar, editar y eliminar mantenimientos.
 
@@ -75,6 +83,8 @@ Las operaciones de creación y edición se realizarán mediante diálogos dentro
 - SQLite
 - Material 3
 - Android SDK
+- Firebase Authentication
+- Cloud Firestore
 
 ---
 
