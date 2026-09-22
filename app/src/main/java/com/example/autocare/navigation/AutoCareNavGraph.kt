@@ -12,7 +12,7 @@ import com.example.autocare.ui.screens.vehiculo.MiVehiculoScreen
 
 @Composable
 fun AutoCareNavGraph(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = "inicio") { //Aqui cambiar a login o a la pantala que necesiten para probar
+    NavHost(navController = navController, startDestination = "login") { //Aqui cambiar a login o a la pantala que necesiten para probar
         composable("login") {
             LoginScreen(onLoginSuccess = {
                 navController.navigate("inicio") { popUpTo("login") { inclusive = true } }
