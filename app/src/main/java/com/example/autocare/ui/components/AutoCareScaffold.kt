@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 
 enum class AutoCareTab(val label: String, val icon: androidx.compose.ui.graphics.vector.ImageVector) {
@@ -29,7 +30,7 @@ fun AutoCareScaffold(
             TopAppBar(
                 title = {
                     androidx.compose.foundation.layout.Column {
-                        Text(title, style = MaterialTheme.typography.titleLarge)
+                        Text(title, style = MaterialTheme.typography.titleLarge, color = Color(0xFF18317E))
                         subtitle?.let {
                             Text(it, style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant)
