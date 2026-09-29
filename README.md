@@ -26,51 +26,9 @@ AutoCare busca solucionar este problema proporcionando una herramienta sencilla 
 
 ---
 
-##  Funcionalidades principales
-
-- Registrar información del vehículo.
-- Consultar la información del vehículo.
-- Actualizar el kilometraje del vehículo.
-- Registrar mantenimientos realizados.
-- Consultar el historial de mantenimientos.
-- Editar registros de mantenimiento.
-- Eliminar registros de mantenimiento.
-- Registrar el costo de cada mantenimiento.
-- Consultar el total gastado en mantenimiento.
-- Identificar próximos mantenimientos según kilometraje.
-- Mostrar un resumen general del estado del vehículo.
-- Registro e inicio de sesión de usuarios.
-- Almacenamiento de información en la nube.
-- Sincronización de los datos del usuario entre dispositivos.
-
 Para conocer el detalle de cada funcionalidad, consultar:
 
 [`docs/funcionalidades.md`](docs/funcionalidades.md)
-
----
-
-## Pantallas
-
-### 1. Login / Registro
-
-Permite al usuario crear una cuenta e iniciar sesión para acceder a sus datos personales.
-
-Las demás pantallas estarán disponibles después de iniciar sesión:
-
-
-### 2. Inicio
-
-Presenta un resumen del vehículo y de su estado de mantenimiento.
-
-### 3. Mi vehículo
-
-Permite consultar y actualizar la información básica del vehículo.
-
-### 4. Mantenimientos
-
-Permite registrar, consultar, editar y eliminar mantenimientos.
-
-Las operaciones de creación y edición se realizarán mediante diálogos dentro de las pantallas principales para mantener una interfaz sencilla y reducir la cantidad de pantallas.
 
 ---
 
