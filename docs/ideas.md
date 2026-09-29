@@ -29,15 +29,6 @@ Desarrollar una aplicación móvil que permita centralizar esta información y p
 - Cálculo del gasto total.
 - Seguimiento del próximo mantenimiento.
 
-### Tecnologías propuestas
-
-- Kotlin.
-- Jetpack Compose.
-- Room.
-- SQLite.
-- Material 3.
-- Android Studio.
-
 ### Aplicaciones similares
 
 - [Drivvo - Gastos de coche](https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar)
