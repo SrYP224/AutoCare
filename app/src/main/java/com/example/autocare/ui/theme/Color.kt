@@ -37,3 +37,38 @@ val SurfaceContainerLowest = Color(0xFFFFFFFF)
 val SurfaceContainerHigh = Color(0xFFE8E8EB)
 val Outline = Color(0xFF717782)
 val OutlineVariant = Color(0xFFC1C7D2)
+
+//... Colores tema oscuro:
+
+val DarkPrimary = Color(0xFFD2E4FF)
+val DarkOnPrimary = Color(0xFF003258)
+val DarkPrimaryContainer = Color(0xFF9FCAFF)
+val DarkOnPrimaryContainer = Color(0xFF265583)
+
+val DarkSecondary = Color(0xFFBBC7DB)
+val DarkOnSecondary = Color(0xFF263141)
+val DarkSecondaryContainer = Color(0xFF3E4A5A)
+val DarkOnSecondaryContainer = Color(0xFFADB9CD)
+
+val DarkTertiary = Color(0xFFFFDEA7)
+val DarkOnTertiary = Color(0xFF412D00)
+val DarkTertiaryContainer = Color(0xFFFFBB18)
+val DarkOnTertiaryContainer = Color(0xFF6D4D00)
+
+val DarkError = Color(0xFFFFB4AB)
+val DarkOnError = Color(0xFF690005)
+val DarkErrorContainer = Color(0xFF93000A)
+val DarkOnErrorContainer = Color(0xFFFFDAD6)
+
+val DarkBackground = Color(0xFF121416)
+val DarkOnBackground = Color(0xFFE2E2E5)
+val DarkSurface = Color(0xFF121212)
+val DarkOnSurface = Color(0xFFE2E2E5)
+val DarkSurfaceVariant = Color(0xFF333537)
+val DarkOnSurfaceVariant = Color(0xFFC1C7D2)
+val DarkSurfaceContainer = Color(0xFF1E2022)
+val DarkSurfaceContainerLow = Color(0xFF1A1B1E)
+val DarkSurfaceContainerLowest = Color(0xFF0C0E10)
+val DarkSurfaceContainerHigh = Color(0xFF282A2C)
+val DarkOutline = Color(0xFF8C919A)
+val DarkOutlineVariant = Color(0xFF42474F)

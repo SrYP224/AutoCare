@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.autocare.R
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 
 @Composable
 fun LoginScreen(
@@ -63,10 +64,11 @@ fun LoginScreen(
     }
 
     // Colores de la interfaz
-    val primaryColor = Color(0xFF18317E)
-    val backgroundColor = Color(0xFFF8FAFF)
-    val textColor = Color(0xFF1C1C1C)
-    val borderColor = Color(0xFFD0D5DD)
+    // Colores de la interfaz — ahora tomados del tema (cambian con modo claro/oscuro)
+    val primaryColor = MaterialTheme.colorScheme.primary
+    val backgroundColor = MaterialTheme.colorScheme.background
+    val textColor = MaterialTheme.colorScheme.onBackground
+    val borderColor = MaterialTheme.colorScheme.outline
 
     Box(
         modifier = Modifier
@@ -119,7 +121,7 @@ fun LoginScreen(
             Text(
                 text = "Inicia sesión para continuar",
                 fontSize = 16.sp,
-                color = Color.Gray
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Spacer(
