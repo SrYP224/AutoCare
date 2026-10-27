@@ -1,374 +1,293 @@
 package com.example.autocare.ui.screens.login
 
-import androidx.compose.foundation.BorderStroke
+import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.autocare.R
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
+import com.example.autocare.viewmodel.AuthViewModel
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun LoginScreen(
-    onLoginSuccess: () -> Unit
+    onLoginSuccess: () -> Unit,
+    authViewModel: AuthViewModel = viewModel()
 ) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var confirmar by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+    var modoRegistro by remember { mutableStateOf(false) }
+    var errorLocal by remember { mutableStateOf<String?>(null) }
 
-    // Estados de los campos
-    var email by remember {
-        mutableStateOf("")
-    }
+    val uiState by authViewModel.uiState.collectAsState()
+    val context = LocalContext.current
+    val mensajeError = errorLocal ?: uiState.error
 
-    var password by remember {
-        mutableStateOf("")
-    }
-
-    var passwordVisible by remember {
-        mutableStateOf(false)
-    }
-
-    // Colores de la interfaz
-    // Colores de la interfaz — ahora tomados del tema (cambian con modo claro/oscuro)
     val primaryColor = MaterialTheme.colorScheme.primary
-    val backgroundColor = MaterialTheme.colorScheme.background
     val textColor = MaterialTheme.colorScheme.onBackground
-    val borderColor = MaterialTheme.colorScheme.outline
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(backgroundColor)
+            .background(MaterialTheme.colorScheme.background)
     ) {
-
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    horizontal = 28.dp,
-                    vertical = 40.dp
-                ),
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .imePadding()
+                .padding(horizontal = 28.dp, vertical = 40.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
-            /*
-             * LOGO AUTOCARE
-             *
-             * res/drawable/autocare_logo.png
-             */
             Image(
-                painter = painterResource(
-                    id = R.drawable.autocare_logo
-                ),
+                painter = painterResource(id = R.drawable.autocare_logo),
                 contentDescription = "Logo de AutoCare",
-                modifier = Modifier
-                    .size(130.dp)
+                modifier = Modifier.size(130.dp)
             )
 
-            Spacer(
-                modifier = Modifier.height(24.dp)
-            )
+            Spacer(Modifier.height(24.dp))
 
-            // Título
             Text(
                 text = "Bienvenido a AutoCare",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
-                color = primaryColor
+                color = primaryColor,
+                textAlign = TextAlign.Center
             )
 
-            Spacer(
-                modifier = Modifier.height(8.dp)
-            )
+            Spacer(Modifier.height(8.dp))
 
-            // Subtítulo
             Text(
-                text = "Inicia sesión para continuar",
+                text = if (modoRegistro) "Crea tu cuenta para continuar"
+                else "Inicia sesión para continuar",
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            Spacer(
-                modifier = Modifier.height(32.dp)
-            )
+            Spacer(Modifier.height(32.dp))
 
-            // Campo de correo
             OutlinedTextField(
                 value = email,
-                onValueChange = {
-                    email = it
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                onValueChange = { email = it },
+                modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                label = {
-                    Text("Correo electrónico")
-                },
+                label = { Text("Correo electrónico") },
                 leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "Correo electrónico"
-                    )
+                    Icon(Icons.Default.Person, contentDescription = "Correo electrónico")
                 },
-                shape = RoundedCornerShape(12.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = primaryColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedLabelColor = primaryColor,
-                    cursorColor = primaryColor
-                )
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                shape = RoundedCornerShape(12.dp)
             )
 
-            Spacer(
-                modifier = Modifier.height(16.dp)
-            )
+            Spacer(Modifier.height(16.dp))
 
-            // Campo de contraseña
             OutlinedTextField(
                 value = password,
-                onValueChange = {
-                    password = it
-                },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                onValueChange = { password = it },
+                modifier = Modifier.fillMaxWidth(),
                 singleLine = true,
-                label = {
-                    Text("Contraseña")
-                },
+                label = { Text("Contraseña") },
                 leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = "Contraseña"
-                    )
+                    Icon(Icons.Default.Lock, contentDescription = "Contraseña")
                 },
                 trailingIcon = {
-
-                    IconButton(
-                        onClick = {
-                            passwordVisible = !passwordVisible
-                        }
-                    ) {
-
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(
-                            imageVector = if (passwordVisible) {
-                                Icons.Default.VisibilityOff
-                            } else {
-                                Icons.Default.Visibility
-                            },
-                            contentDescription = if (passwordVisible) {
-                                "Ocultar contraseña"
-                            } else {
-                                "Mostrar contraseña"
-                            }
+                            imageVector = if (passwordVisible) Icons.Default.VisibilityOff
+                            else Icons.Default.Visibility,
+                            contentDescription = if (passwordVisible) "Ocultar contraseña"
+                            else "Mostrar contraseña"
                         )
                     }
                 },
-                visualTransformation = if (passwordVisible) {
-                    VisualTransformation.None
-                } else {
-                    PasswordVisualTransformation()
-                },
-                shape = RoundedCornerShape(12.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = primaryColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedLabelColor = primaryColor,
-                    cursorColor = primaryColor
+                visualTransformation = if (passwordVisible) VisualTransformation.None
+                else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                shape = RoundedCornerShape(12.dp)
+            )
+
+            if (modoRegistro) {
+                Spacer(Modifier.height(16.dp))
+                OutlinedTextField(
+                    value = confirmar,
+                    onValueChange = { confirmar = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true,
+                    label = { Text("Confirmar contraseña") },
+                    leadingIcon = {
+                        Icon(Icons.Default.Lock, contentDescription = "Confirmar contraseña")
+                    },
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    shape = RoundedCornerShape(12.dp)
                 )
-            )
+            } else {
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = "¿Olvidaste tu contraseña?",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            errorLocal = null
+                            authViewModel.recuperarContrasena(email)
+                        },
+                    color = primaryColor,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
 
-            Spacer(
-                modifier = Modifier.height(12.dp)
-            )
+            Spacer(Modifier.height(16.dp))
 
-            // Recuperar contraseña
-            Text(
-                text = "¿Olvidaste tu contraseña?",
-                modifier = Modifier
-                    .fillMaxWidth(),
-                color = primaryColor,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
+            if (mensajeError != null) {
+                Text(
+                    text = mensajeError,
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(Modifier.height(12.dp))
+            }
+            if (uiState.mensaje != null) {
+                Text(
+                    text = uiState.mensaje ?: "",
+                    color = primaryColor,
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(Modifier.height(12.dp))
+            }
 
-            Spacer(
-                modifier = Modifier.height(28.dp)
-            )
-
-            // Botón iniciar sesión
             Button(
-                onClick = {
+                onClick = click@{
+                    val problema = when {
+                        !Patterns.EMAIL_ADDRESS.matcher(email.trim()).matches() ->
+                            "Escribe un correo válido"
+                        password.length < 6 ->
+                            "La contraseña debe tener al menos 6 caracteres"
+                        modoRegistro && password != confirmar ->
+                            "Las contraseñas no coinciden"
+                        else -> null
+                    }
+                    errorLocal = problema
+                    if (problema != null) return@click
 
-                    /*
-                     * Aquí posteriormente podemos colocar
-                     * la autenticación contra el backend.
-                     */
-                    if (
-                        email.isNotBlank() &&
-                        password.isNotBlank()
-                    ) {
-                        onLoginSuccess()
+                    if (modoRegistro) {
+                        authViewModel.registrar(email, password, onLoginSuccess)
+                    } else {
+                        authViewModel.login(email, password, onLoginSuccess)
                     }
                 },
+                enabled = !uiState.cargando,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(54.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = primaryColor
-                )
+                shape = RoundedCornerShape(12.dp)
             ) {
-
-                Text(
-                    text = "Iniciar sesión",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                if (uiState.cargando) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(22.dp),
+                        strokeWidth = 2.dp,
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
+                } else {
+                    Text(
+                        text = if (modoRegistro) "Crear cuenta" else "Iniciar sesión",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
 
-            Spacer(
-                modifier = Modifier.height(20.dp)
-            )
+            Spacer(Modifier.height(20.dp))
 
-            // Botón continuar con Google
             OutlinedButton(
                 onClick = {
-                    // Pendiente de implementar autenticación con Google
+                    errorLocal = null
+                    authViewModel.loginConGoogle(context, onLoginSuccess)
                 },
+                enabled = !uiState.cargando,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
                 shape = RoundedCornerShape(12.dp),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = borderColor
-                )
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = textColor)
             ) {
-
                 Image(
-                    painter = painterResource(
-                        id = R.drawable.google_logo
-                    ),
+                    painter = painterResource(id = R.drawable.google_logo),
                     contentDescription = "Google",
                     modifier = Modifier.size(22.dp)
                 )
-
-                Spacer(
-                    modifier = Modifier.width(10.dp)
-                )
-
-                Text(
-                    text = "Continuar con Google",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = textColor
-                )
+                Spacer(Modifier.width(10.dp))
+                Text("Continuar con Google", fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }
 
-            Spacer(
-                modifier = Modifier.height(12.dp)
-            )
+            Spacer(Modifier.height(12.dp))
 
-            // Botón continuar con Apple
             OutlinedButton(
-                onClick = {
-                    // Pendiente de implementar autenticación con Apple
-                },
+                onClick = { errorLocal = "Inicio de sesión con Apple: próximamente" },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
                 shape = RoundedCornerShape(12.dp),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = borderColor
-                )
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = textColor)
             ) {
-
                 Image(
-                    painter = painterResource(
-                        id = R.drawable.apple_logo
-                    ),
+                    painter = painterResource(id = R.drawable.apple_logo),
                     contentDescription = "Apple",
                     modifier = Modifier.size(22.dp)
                 )
-
-                Spacer(
-                    modifier = Modifier.width(10.dp)
-                )
-
-                Text(
-                    text = "Continuar con Apple",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = textColor
-                )
+                Spacer(Modifier.width(10.dp))
+                Text("Continuar con Apple", fontSize = 15.sp, fontWeight = FontWeight.Medium)
             }
 
-            Spacer(
-                modifier = Modifier.height(24.dp)
-            )
+            Spacer(Modifier.height(24.dp))
 
-            // Texto inferior
             Text(
-                text = "¿No tienes una cuenta?",
+                text = if (modoRegistro) "¿Ya tienes una cuenta?" else "¿No tienes una cuenta?",
                 fontSize = 14.sp,
                 color = textColor
             )
-
-            Spacer(
-                modifier = Modifier.height(4.dp)
-            )
-
+            Spacer(Modifier.height(4.dp))
             Text(
-                text = "Regístrate",
+                text = if (modoRegistro) "Inicia sesión" else "Regístrate",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
-                color = primaryColor
+                color = primaryColor,
+                modifier = Modifier.clickable {
+                    modoRegistro = !modoRegistro
+                    confirmar = ""
+                    errorLocal = null
+                    authViewModel.limpiarError()
+                }
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen(
-        onLoginSuccess = {}
-    )
 }

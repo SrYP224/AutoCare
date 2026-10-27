@@ -72,3 +72,6 @@ val DarkSurfaceContainerLowest = Color(0xFF0C0E10)
 val DarkSurfaceContainerHigh = Color(0xFF282A2C)
 val DarkOutline = Color(0xFF8C919A)
 val DarkOutlineVariant = Color(0xFF42474F)
+
+val SurfaceContainerHighest = Color(0xFFE3E2E5)
+val DarkSurfaceContainerHighest = Color(0xFF333537)

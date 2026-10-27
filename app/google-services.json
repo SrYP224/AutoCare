@@ -12,7 +12,20 @@
           "package_name": "com.example.autocare"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1067539866515-bh6b4v7qfods4q8l4muepih78usgd1cp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.autocare",
+            "certificate_hash": "20e8fb45e2957da521e474728a42fe6484ec6882"
+          }
+        },
+        {
+          "client_id": "1067539866515-6lsmkfj358goh5ups0c0ruh6qu702up8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCC56OvDvNCflA-2xOjlZ9ulpP3nX8Paa8"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067539866515-6lsmkfj358goh5ups0c0ruh6qu702up8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
