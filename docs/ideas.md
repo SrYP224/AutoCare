@@ -2,41 +2,12 @@
 
 ## AutoCare - Control de Mantenimiento Vehicular
 
-AutoCare es una aplicación móvil orientada a propietarios de vehículos que necesitan llevar un control sencillo del mantenimiento de su automóvil.
-
-La aplicación permitirá registrar la información básica del vehículo y almacenar un historial de los mantenimientos realizados, incluyendo el tipo de servicio, fecha, kilometraje, costo y descripción.
-
-Además, permitirá consultar el total gastado en mantenimiento y realizar un seguimiento del próximo servicio recomendado según el kilometraje.
-
-### Problema
-
-Los propietarios de vehículos pueden olvidar cuándo realizaron un mantenimiento, cuánto gastaron o en qué kilometraje se realizó determinado servicio.
-
-Esto puede dificultar el seguimiento adecuado del mantenimiento preventivo del vehículo.
-
-### Solución propuesta
-
-Desarrollar una aplicación móvil que permita centralizar esta información y presentarla de forma sencilla y organizada.
-
-### Funcionalidades principales
-
-- Registro del vehículo.
-- Consulta y actualización del kilometraje.
-- Registro de mantenimientos.
-- Historial de mantenimientos.
-- Edición y eliminación de registros.
-- Registro de costos.
-- Cálculo del gasto total.
-- Seguimiento del próximo mantenimiento.
+Aplicación móvil para que los propietarios de vehículos lleven un control sencillo del mantenimiento de su automóvil. La descripción completa y el problema que resuelve están en el [README](../README.md); las funciones, en [funcionalidades.md](funcionalidades.md).
 
 ### Aplicaciones similares
 
-- [Drivvo - Gastos de coche](https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar)
-- [Simply Auto: Mantenimiento](https://play.google.com/store/apps/details?id=mrigapps.andriod.fuelcons)
-
-Drivvo permite gestionar gastos, mantenimiento, cambios de aceite y otros servicios del vehículo, además de programar recordatorios por fecha o kilometraje. :contentReference[oaicite:0]{index=0}
-
-Simply Auto permite registrar servicios, gastos y mantenimientos, así como establecer recordatorios por fecha o kilometraje. :contentReference[oaicite:1]{index=1}
+- [Drivvo - Gastos de coche](https://play.google.com/store/apps/details?id=br.com.ctncardoso.ctncar): permite gestionar gastos, mantenimiento, cambios de aceite y otros servicios del vehículo, además de programar recordatorios por fecha o kilometraje.
+- [Simply Auto: Mantenimiento](https://play.google.com/store/apps/details?id=mrigapps.andriod.fuelcons): permite registrar servicios, gastos y mantenimientos, así como establecer recordatorios por fecha o kilometraje.
 
 ---
 
