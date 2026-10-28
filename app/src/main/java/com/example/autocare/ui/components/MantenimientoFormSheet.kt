@@ -137,7 +137,7 @@ fun MantenimientoFormSheet(
 
                         val mensaje = when {
                             tipo.isBlank() -> "Indica el tipo de mantenimiento"
-                            !fechaValida(fecha) -> "La fecha debe tener el formato dd/mm/aaaa"
+                            !fechaValida(fecha) -> "La fecha debe tener el formato dd/mm/aaaa valido"
                             kmInt == null || kmInt <= 0 -> "Indica el kilometraje del servicio"
                             costoInt == null -> "Indica el costo"
                             proximoKm.isNotBlank() && proximoInt <= kmInt ->
