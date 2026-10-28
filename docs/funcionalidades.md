@@ -1,16 +1,10 @@
 # Funcionalidades - AutoCare
 
+Este documento describe qué hace la aplicación. Los campos de cada entidad (vehículo y mantenimiento) están definidos una sola vez en [Información almacenada](../README.md#información-almacenada), y el diseño de las pantallas en [ui.md](ui.md).
+
 ## 1. Gestión del vehículo
 
-La aplicación permitirá registrar y consultar la información básica del vehículo del usuario.
-
-### Datos
-
-- Marca
-- Modelo
-- Año
-- Placa
-- Kilometraje actual
+La aplicación permitirá registrar y consultar la información básica del vehículo del usuario (datos en [Información almacenada](../README.md#información-almacenada)).
 
 ### Funciones
 
@@ -42,16 +36,7 @@ Permitir que el usuario pueda conocer rápidamente el estado general de su vehí
 
 ## 3. Registro de mantenimiento
 
-El usuario podrá registrar cada mantenimiento realizado al vehículo.
-
-### Información
-
-- Tipo de mantenimiento.
-- Fecha.
-- Kilometraje.
-- Costo.
-- Descripción.
-- Próximo kilometraje recomendado.
+El usuario podrá registrar cada mantenimiento realizado al vehículo (datos en [Información almacenada](../README.md#información-almacenada)).
 
 ### Ejemplos de mantenimiento
 
@@ -70,13 +55,7 @@ El usuario podrá registrar cada mantenimiento realizado al vehículo.
 
 La aplicación permitirá consultar los mantenimientos registrados anteriormente.
 
-Cada registro mostrará:
-
-- Tipo de mantenimiento.
-- Fecha.
-- Kilometraje.
-- Costo.
-- Descripción.
+Cada registro mostrará los datos del mantenimiento.
 
 El historial estará ordenado desde el mantenimiento más reciente hasta el más antiguo.
 
@@ -86,14 +65,7 @@ El historial estará ordenado desde el mantenimiento más reciente hasta el más
 
 El usuario podrá modificar la información de un mantenimiento registrado.
 
-Se podrán modificar:
-
-- Tipo.
-- Fecha.
-- Kilometraje.
-- Costo.
-- Descripción.
-- Próximo kilometraje.
+Se podrán modificar todos los datos del mantenimiento.
 
 ---
 
@@ -162,91 +134,3 @@ La aplicación validará los datos ingresados por el usuario.
 - El costo no puede ser negativo.
 - La fecha debe ser válida.
 - El tipo de mantenimiento debe ser seleccionado.
-
----
-
-# Pantallas principales
-
-AutoCare contará con tres pantallas principales.
-
-## Pantalla 1 - Inicio
-
-### Función
-
-Mostrar un resumen general del vehículo.
-
-### Contenido
-
-- Información resumida del vehículo.
-- Kilometraje actual.
-- Próximo mantenimiento.
-- Último mantenimiento.
-- Total gastado.
-
----
-
-## Pantalla 2 - Mi vehículo
-
-### Función
-
-Permitir administrar la información básica del vehículo.
-
-### Contenido
-
-- Marca.
-- Modelo.
-- Año.
-- Placa.
-- Kilometraje.
-
-### Acciones
-
-- Guardar.
-- Editar.
-- Actualizar kilometraje.
-
----
-
-## Pantalla 3 - Mantenimientos
-
-### Función
-
-Administrar el historial de mantenimientos.
-
-### Contenido
-
-- Lista de mantenimientos.
-- Fecha.
-- Tipo.
-- Kilometraje.
-- Costo.
-
-### Acciones
-
-- Agregar mantenimiento.
-- Editar mantenimiento.
-- Eliminar mantenimiento.
-- Consultar detalle.
-
-Las acciones de agregar y editar utilizarán diálogos para evitar crear pantallas adicionales.
-
----
-
-# Alcance inicial
-
-La primera versión de AutoCare se limitará a las funcionalidades necesarias para demostrar el funcionamiento principal de la aplicación.
-
-No se implementarán inicialmente:
-
-- Login.
-- Registro de usuarios.
-- GPS.
-- Mapas.
-- Pagos.
-- Conexión con talleres.
-- Integración con sensores del vehículo.
-- Servicios en la nube.
-- Notificaciones push.
-- Gestión de flotas.
-
-Estas funcionalidades podrían considerarse como posibles ampliaciones futuras.
