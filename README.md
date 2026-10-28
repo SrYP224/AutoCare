@@ -1,8 +1,8 @@
-#  AutoCare
+# AutoCare
 
 Aplicación móvil para el control y seguimiento del mantenimiento de vehículos.
 
-##  Descripción
+## Descripción
 
 AutoCare es una aplicación móvil desarrollada para ayudar a los propietarios de vehículos a llevar un control sencillo y organizado de los mantenimientos realizados a su vehículo.
 
@@ -23,12 +23,6 @@ Desarrollar una aplicación móvil que facilite la gestión del mantenimiento de
 Los propietarios de vehículos pueden olvidar las fechas o el kilometraje en el que realizaron determinados mantenimientos, así como los gastos asociados a reparaciones y servicios.
 
 AutoCare busca solucionar este problema proporcionando una herramienta sencilla que permita centralizar esta información en un solo lugar.
-
----
-
-Para conocer el detalle de cada funcionalidad, consultar:
-
-[`docs/funcionalidades.md`](docs/funcionalidades.md)
 
 ---
 
@@ -87,17 +81,16 @@ UI → ViewModel → Repository → Room → SQLite
 
 ---
 
-Autor(es): 
+## Documentación
 
-- Yeison David Parra Mosquera
-- Samuel Murillo Vargas 
-- Michael David Portilla Montilla
-
-
-## Referencias
-
-- [Ideas iniciales de proyecto](docs/ideas.md)
 - [Funcionalidades de la aplicación](docs/funcionalidades.md)
 - [Diseño de la interfaz de usuario](docs/ui.md)
+- [Ideas iniciales de proyecto](docs/ideas.md)
 
-p1.0.1
+---
+
+## Autores
+
+- Yeison David Parra Mosquera
+- Samuel Murillo Vargas
+- Michael David Portilla Montilla
