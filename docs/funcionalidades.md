@@ -134,3 +134,40 @@ La aplicación validará los datos ingresados por el usuario.
 - El costo no puede ser negativo.
 - La fecha debe ser válida.
 - El tipo de mantenimiento debe ser seleccionado.
+
+---
+
+## 10. Registro de varios mantenimientos en una misma visita
+
+### Observación
+
+Al registrar un mantenimiento cuyo tipo no corresponde al programado (por ejemplo, frenos mientras hay un cambio de aceite pendiente), la tarjeta "Próximo mantenimiento" sigue mostrando el servicio que se omitió.
+
+### Regla de negocio
+
+El próximo mantenimiento se calcula **por tipo**. Un servicio programado deja de estar pendiente únicamente cuando se registra un mantenimiento de ese mismo tipo. Registrar un servicio diferente no lo reemplaza.
+
+### Solución en el flujo
+
+El formulario "Añadir mantenimiento" permite marcar varios tipos en un solo registro. Se guarda un mantenimiento por cada tipo marcado, con la misma fecha y kilometraje, y cada uno con su propio costo y su propio próximo kilometraje.
+
+### Flujo
+
+1. Pulsar "Añadir" (en Inicio o en Mantenimientos).
+2. Marcar todos los servicios realizados en la visita (por ejemplo, Frenos y Cambio de aceite).
+3. Ingresar fecha, kilometraje y, para cada tipo, el costo y el próximo kilometraje.
+4. Guardar. Cada tipo queda en el historial y el pendiente se da por cumplido.
+
+### Ejemplo
+
+| Situación | Resultado en Inicio |
+|---|---|
+| Cambio de aceite programado a los 70.000 km, vehículo en 72.000 km | 🔴 Mantenimiento pendiente: Cambio de aceite |
+| Se registra solo "Frenos" a los 72.000 km | 🔴 El aceite sigue pendiente |
+| Se registran "Frenos" y "Cambio de aceite" juntos a los 72.000 km | Se cumple el pendiente y el próximo pasa al siguiente servicio programado |
+
+### Consideraciones
+
+- El total gastado suma el costo de cada tipo, por eso el costo se captura por separado.
+- Al editar un registro existente solo se modifica ese mantenimiento (un único tipo).
+- Si no se indica próximo kilometraje para un tipo, ese tipo queda sin programación.
