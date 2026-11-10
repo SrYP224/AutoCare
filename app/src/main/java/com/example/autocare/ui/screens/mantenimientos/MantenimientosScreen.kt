@@ -190,10 +190,11 @@ fun MantenimientosScreen(
         MantenimientoFormSheet(
             inicial = editando,
             kmActual = kmActual,
-            onGuardar = { m ->
-                if (editando == null) mantVm.crear(m) else mantVm.editar(m)
-                if (vehiculo != null && m.kilometraje > kmActual) {
-                    vehiculoVm.actualizarKilometraje(m.kilometraje)
+            onGuardar = { lista ->
+                if (editando == null) lista.forEach { mantVm.crear(it) } else mantVm.editar(lista.first())
+                val kmServicio = lista.first().kilometraje
+                if (vehiculo != null && kmServicio > kmActual) {
+                    vehiculoVm.actualizarKilometraje(kmServicio)
                 }
                 mostrarForm = false
                 editando = null

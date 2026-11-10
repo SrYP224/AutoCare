@@ -15,7 +15,7 @@ data class ProximoMantenimiento(
  * nuevo reemplaza el "próximo km" del anterior). Entre esos, devuelve el que vence primero.
  */
 fun calcularProximo(lista: List<Mantenimiento>, kmActual: Int): ProximoMantenimiento? =
-    lista.groupBy { it.tipo }
+    lista.groupBy { it.tipo.trim().lowercase() }
         .map { (_, registros) -> registros.maxBy { it.kilometraje } }
         .filter { it.proximoKilometraje > 0 }
         .minByOrNull { it.proximoKilometraje }

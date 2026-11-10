@@ -123,9 +123,10 @@ fun InicioScreen(
         MantenimientoFormSheet(
             inicial = null,
             kmActual = kmActual,
-            onGuardar = { m ->
-                mantenimientosVm.crear(m)
-                if (m.kilometraje > kmActual) vehiculoVm.actualizarKilometraje(m.kilometraje)
+            onGuardar = { lista ->
+                lista.forEach { mantenimientosVm.crear(it) }
+                val kmServicio = lista.first().kilometraje
+                if (kmServicio > kmActual) vehiculoVm.actualizarKilometraje(kmServicio)
                 mostrarForm = false
             },
             onCerrar = { mostrarForm = false }
@@ -254,6 +255,12 @@ private fun ProximoMantenimientoCard(proximo: ProximoMantenimiento?, kmActual: I
                     "Recomendado a los ${m.proximoKilometraje.miles()} km",
                     style = MaterialTheme.typography.bodyMedium
                 )
+                if (pendiente) {
+                    Text(
+                        "Si ya lo hiciste junto con otro servicio, toca «Añadir» y marca ambos tipos en el mismo registro.",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
                 val recorrido = (m.proximoKilometraje - m.kilometraje).coerceAtLeast(1)
                 val progreso = ((kmActual - m.kilometraje).toFloat() / recorrido).coerceIn(0f, 1f)
                 LinearProgressIndicator(
